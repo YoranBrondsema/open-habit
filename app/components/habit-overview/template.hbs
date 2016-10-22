@@ -1,0 +1,8 @@
+{{#link-to 'habit' habit}}{{habit.label}}{{/link-to}}
+
+{{#if hasNoResultOfToday}}
+  {{daily-result-creator
+      habit=habit
+      day=today
+  }}
+{{/if}}

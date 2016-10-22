@@ -1,0 +1,11 @@
+.daily-result {
+  height: 100%;
+
+  &.is-success {
+    background-color: green;
+  }
+
+  &.is-failure {
+    background-color: red;
+  }
+}

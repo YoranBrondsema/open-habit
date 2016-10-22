@@ -1,1 +1,7 @@
+/* Mixins */
+@import 'mixins/square';
+
+/* Components */
 @import 'components/habit-display';
+@import 'components/habit-overview';
+@import 'components/daily-result';

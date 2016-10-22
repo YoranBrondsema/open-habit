@@ -1,2 +1,12 @@
 {{habit.label}}
-<button class="button-delete" {{action 'delete'}}>Delete</button>
+
+<ul class="daily-results">
+  {{#each allDays as |day|}}
+    <li>
+      {{daily-result
+          habit=habit
+          day=day
+      }}
+    </li>
+  {{/each}}
+</ul>

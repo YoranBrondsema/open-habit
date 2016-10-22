@@ -1,3 +1,14 @@
 .habit-display {
-  margin: 20px 0;
+  .daily-results {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+
+    li {
+      @include square;
+      list-style: none;
+      border: 1px solid black;
+      flex-basis: calc(25% - 2px);
+    }
+  }
 }
