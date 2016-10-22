@@ -21,11 +21,26 @@ module.exports = function(deployTarget) {
     // configure other plugins for production deploy target here
   }
 
+  // s3
   ENV.s3 = {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     bucket: process.env.AWS_BUCKET,
     region: process.env.AWS_REGION
+  };
+
+  // s3-index
+  ENV['s3-index'] = {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    bucket: process.env.AWS_BUCKET,
+    region: process.env.AWS_REGION,
+    allowOverwrite: true
+  };
+
+  // Pipeline
+  ENV.pipeline = {
+    activateOnDeploy: true
   };
 
   // Note: if you need to build some configuration asynchronously, you can return
