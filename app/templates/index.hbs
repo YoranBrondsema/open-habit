@@ -1,0 +1,14 @@
+{{#each model as |habit|}}
+  {{habit-display
+      habit=habit
+  }}
+{{/each}}
+
+{{#form-for
+    newHabit
+    submit=(action 'addHabit')
+    as |f|
+}}
+  {{f.text-field 'label'}}
+  {{f.submit 'Add habit'}}
+{{/form-for}}
