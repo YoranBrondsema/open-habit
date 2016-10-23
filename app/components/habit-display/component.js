@@ -12,15 +12,18 @@ export default Ember.Component.extend({
   allDays: Ember.computed(
     'earliestDay',
     function() {
-      const today = new Date();
-      let currentDay = this.get('earliestDay');
-
       const allDays = [];
-      while (! isSameDay(today, currentDay)) {
-        allDays.push(currentDay);
-        currentDay = moment(currentDay).add(1, 'days').toDate();
+
+      const earliestDay = this.get('earliestDay');
+      const today = new Date();
+      if (Ember.isPresent(earliestDay) && earliestDay <= today) {
+        let currentDay = earliestDay;
+        while (! isSameDay(today, currentDay)) {
+          allDays.push(currentDay);
+          currentDay = moment(currentDay).add(1, 'days').toDate();
+        }
       }
-      allDays.push(currentDay);
+      allDays.push(today);
 
       return allDays.reverse();
     }
