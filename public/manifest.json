@@ -1,0 +1,8 @@
+{
+  "name": "OpenHabit",
+  "short_name": "OpenHabit",
+  "start_url": ".",
+  "display": "fullscreen",
+  "background_color": "#fff",
+  "description": "An open-source habit tracker.",
+}

@@ -21,12 +21,28 @@ module.exports = function(deployTarget) {
     // configure other plugins for production deploy target here
   }
 
+  // Default (https://github.com/ember-cli-deploy/ember-cli-deploy-s3#filepattern) with 'json'
+  var extensionsToUploadToS3 = [
+    'js', 'css',
+    'png', 'gif', 'ico', 'jpg',
+    'xml', 'txt',
+    'svg', 'eot', 'ttf', 'woff', 'woff2',
+    'json'
+  ];
+  var filePattern = `**/*.{${extensionsToUploadToS3.join(',')}}`;
+
+  // Manifest
+  ENV.manifest = {
+    filePattern: filePattern
+  };
+
   // s3
   ENV.s3 = {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     bucket: process.env.AWS_BUCKET,
-    region: process.env.AWS_REGION
+    region: process.env.AWS_REGION,
+    filePattern: filePattern
   };
 
   // s3-index

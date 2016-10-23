@@ -9,7 +9,15 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     fingerprint: {
       enabled: isProductionLikeBuild,
-      prepend: process.env.FINGERPRINT_PREPEND
+      prepend: process.env.FINGERPRINT_PREPEND,
+      extensions: [
+        'js', 'css', 'map',
+        'png', 'jpg', 'gif', 'svg', // images
+        'ttf', 'eot', 'woff', 'woff2', // fonts
+        'ico', // favicon
+        'ogg', 'webm', 'mp4', // videos
+        'json'
+      ],
     },
   });
 
