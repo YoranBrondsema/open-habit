@@ -10,6 +10,10 @@ export default Ember.Controller.extend({
         label: this.get('newHabit.label')
       });
       return habit.save();
+    },
+    clearLocalStorage() {
+      window.localStorage.clear();
+      window.location.reload();
     }
   }
 });
