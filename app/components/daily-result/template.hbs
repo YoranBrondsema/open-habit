@@ -1,8 +1,9 @@
 {{formattedDay}}
 
-{{#if hasNoDailyResult}}
+{{#if showCreator}}
   {{daily-result-creator
       habit=habit
       day=day
+      dailyResult=dailyResult
   }}
 {{/if}}

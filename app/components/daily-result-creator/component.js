@@ -8,24 +8,32 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
 
   /* Tasks */
-  createDailyResultTask: task(function* (isSuccess) {
-    const dailyResult = this.get('store').createRecord('daily-result', {
-      habit: this.get('habit'),
-      isSuccess: isSuccess,
-      day: this.get('day')
-    });
+  updateDailyResultTask: task(function* (isSuccess) {
+    let dailyResult;
+    if (this.get('hasNoDailyResult')) {
+      dailyResult = this.get('store').createRecord('daily-result', {
+        habit: this.get('habit'),
+        day: this.get('day')
+      });
+      yield this.get('habit').save();
+    } else {
+      dailyResult = this.get('dailyResult');
+    }
 
+    dailyResult.set('isSuccess', isSuccess);
     yield dailyResult.save();
-    yield this.get('habit').save();
   }).drop(),
+
+  /* Properties */
+  hasNoDailyResult: Ember.computed.empty('dailyResult'),
 
   /* Actions */
   actions: {
     success() {
-      return this.get('createDailyResultTask').perform(true);
+      return this.get('updateDailyResultTask').perform(true);
     },
     failure() {
-      return this.get('createDailyResultTask').perform(false);
+      return this.get('updateDailyResultTask').perform(false);
     }
   }
 });
