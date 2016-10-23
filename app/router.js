@@ -7,7 +7,6 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('habits');
   this.route('habit', { path: '/habits/:id' });
 });
 
